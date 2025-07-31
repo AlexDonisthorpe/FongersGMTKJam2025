@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\GMTKFongers.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\GMTKFongers.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\GMTKFongersEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\GMTKFongers">
+      <UniqueIdentifier>{79C21F8F-22D7-39B8-A3C2-28AD2802FF80}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\GMTKFongers\GMTKFongers.Build.cs">
+      <Filter>Source\GMTKFongers</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\GMTKFongers\GMTKFongers.cpp">
+      <Filter>Source\GMTKFongers</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\GMTKFongers.h">
+      <Filter>Source\GMTKFongers</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\GMTKFongersCameraManager.cpp">
+      <Filter>Source\GMTKFongers</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\GMTKFongersCameraManager.h">
+      <Filter>Source\GMTKFongers</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\GMTKFongersCharacter.cpp">
+      <Filter>Source\GMTKFongers</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\GMTKFongersCharacter.h">
+      <Filter>Source\GMTKFongers</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\GMTKFongersGameMode.cpp">
+      <Filter>Source\GMTKFongers</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\GMTKFongersGameMode.h">
+      <Filter>Source\GMTKFongers</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\GMTKFongersPlayerController.cpp">
+      <Filter>Source\GMTKFongers</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\GMTKFongersPlayerController.h">
+      <Filter>Source\GMTKFongers</Filter>
+    </ClInclude>
+    <Filter Include="Source\GMTKFongers\Variant_Horror">
+      <UniqueIdentifier>{BE2CC918-4412-38CB-AE41-173D3DC9B6F5}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Horror\HorrorCharacter.cpp">
+      <Filter>Source\GMTKFongers\Variant_Horror</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Horror\HorrorCharacter.h">
+      <Filter>Source\GMTKFongers\Variant_Horror</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Horror\HorrorGameMode.cpp">
+      <Filter>Source\GMTKFongers\Variant_Horror</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Horror\HorrorGameMode.h">
+      <Filter>Source\GMTKFongers\Variant_Horror</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Horror\HorrorPlayerController.cpp">
+      <Filter>Source\GMTKFongers\Variant_Horror</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Horror\HorrorPlayerController.h">
+      <Filter>Source\GMTKFongers\Variant_Horror</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Horror\HorrorUI.cpp">
+      <Filter>Source\GMTKFongers\Variant_Horror</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Horror\HorrorUI.h">
+      <Filter>Source\GMTKFongers\Variant_Horror</Filter>
+    </ClInclude>
+    <Filter Include="Source\GMTKFongers\Variant_Shooter">
+      <UniqueIdentifier>{E039FF6E-848B-3EEA-BF73-C7A739245E70}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterBulletCounterUI.cpp">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterBulletCounterUI.h">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterCharacter.cpp">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterCharacter.h">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterGameMode.cpp">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterGameMode.h">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterPickup.cpp">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterPickup.h">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterPlayerController.cpp">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterPlayerController.h">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterProjectile.cpp">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterProjectile.h">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterUI.cpp">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterUI.h">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterWeapon.cpp">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterWeapon.h">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterWeaponHolder.cpp">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Shooter\ShooterWeaponHolder.h">
+      <Filter>Source\GMTKFongers\Variant_Shooter</Filter>
+    </ClInclude>
+    <Filter Include="Source\GMTKFongers\Variant_Shooter\AI">
+      <UniqueIdentifier>{9BCBC717-7E18-3D64-9032-20CE10F13D6B}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Shooter\AI\EnvQueryContext_Target.cpp">
+      <Filter>Source\GMTKFongers\Variant_Shooter\AI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Shooter\AI\EnvQueryContext_Target.h">
+      <Filter>Source\GMTKFongers\Variant_Shooter\AI</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Shooter\AI\ShooterAIController.cpp">
+      <Filter>Source\GMTKFongers\Variant_Shooter\AI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Shooter\AI\ShooterAIController.h">
+      <Filter>Source\GMTKFongers\Variant_Shooter\AI</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Shooter\AI\ShooterNPC.cpp">
+      <Filter>Source\GMTKFongers\Variant_Shooter\AI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Shooter\AI\ShooterNPC.h">
+      <Filter>Source\GMTKFongers\Variant_Shooter\AI</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GMTKFongers\Variant_Shooter\AI\ShooterStateTreeUtility.cpp">
+      <Filter>Source\GMTKFongers\Variant_Shooter\AI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GMTKFongers\Variant_Shooter\AI\ShooterStateTreeUtility.h">
+      <Filter>Source\GMTKFongers\Variant_Shooter\AI</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
