@@ -10,8 +10,8 @@ TransitionMap=
 bUseSplitscreen=True
 TwoPlayerSplitscreenLayout=Horizontal
 ThreePlayerSplitscreenLayout=FavorTop
-GameInstanceClass=/Script/Engine.GameInstance
-GameDefaultMap=/Game/FirstPerson/Lvl_FirstPerson.Lvl_FirstPerson
+GameInstanceClass=/Game/FirstPerson/Blueprints/BP_FirstPersonGameInstance.BP_FirstPersonGameInstance_C
+GameDefaultMap=/Game/Maps/MainMenu.MainMenu
 ServerDefaultMap=/Engine/Maps/Entry
 GlobalDefaultGameMode=/Game/FirstPerson/Blueprints/BP_FirstPersonGameMode.BP_FirstPersonGameMode_C
 GlobalDefaultServerGameMode=None
@@ -106,9 +106,7 @@ ManualIPAddress=
 
 [OnlineSubsystem]
 DefaultPlatformService=Steam
-<<<<<<< HEAD
 bHasVoiceEnabled=true
-=======
 
 [OnlineSubsystem]
 bHasVoiceEnabled=true
@@ -124,16 +122,13 @@ bInitServerOnClient=true
 NetConnectionClassName="OnlineSubsystemSteam.SteamNetConnection"
 
 [ConsoleVariables] net.CurrentHandshakeVersion=2 net.MinHandshakeVersion=2
->>>>>>> 179030fbc5dc3ccad3bef9c413c5bd9ab6f5a279
 
 [Voice]
 bEnabled=true
 
-<<<<<<< HEAD
 [OnlineSubsystemSteam]
 bEnabled=true
 SteamDevAppId=480
-=======
 [/Script/EngineSettings.GameMapsSettings]
 EditorStartupMap=/Game/SubLevels/Main.Main
 GameDefaultMap=/Game/SubLevels/Main.Main
@@ -169,4 +164,3 @@ CompressionQualityModifier=1.000000
 AutoStreamingThreshold=0.000000
 SoundCueCookQualityIndex=-1
 
->>>>>>> 179030fbc5dc3ccad3bef9c413c5bd9ab6f5a279
