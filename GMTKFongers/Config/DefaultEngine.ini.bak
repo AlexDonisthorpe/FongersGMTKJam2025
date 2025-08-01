@@ -104,9 +104,3 @@ ConnectionType=USBOnly
 bUseManualIPAddress=False
 ManualIPAddress=
 
-[OnlineSubsystem]
-DefaultPlatformService=Steam
-    
-[OnlineSubsystemSteam]
-bEnabled=true
-SteamDevAppId=480
