@@ -4,6 +4,3 @@ ProjectName=First Person Template
 
 [/Script/EngineSettings.GeneralProjectSettings]
 ProjectID=906DB1094DE3C5FE9E3E7E90CF5CFD80
-
-[/Script/Engine.GameSession]
-bRequiresPushToTalk=true
