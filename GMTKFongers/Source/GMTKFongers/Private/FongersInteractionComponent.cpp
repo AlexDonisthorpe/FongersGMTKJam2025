@@ -9,7 +9,7 @@ UFongersInteractionComponent::UFongersInteractionComponent()
 
 bool UFongersInteractionComponent::CanInteract_Implementation() const
 {
-	return inhibitRequests <= 0;
+	return InhibitRequests <= 0;
 }
 
 bool UFongersInteractionComponent::RequestTapInteraction(AActor* InteractingActor)
