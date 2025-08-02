@@ -113,6 +113,9 @@ public:
 	UFUNCTION(BlueprintPure, BlueprintCallable)
 	bool GetIsHoldingItem() const { return ItemHolding.Get() != nullptr; }
 
+	UFUNCTION(BlueprintCallable)
+	UItemClassData* GetItemHolding() const { return ItemHolding.Get(); }
+
 	/** Returns first person camera component **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
