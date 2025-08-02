@@ -85,7 +85,7 @@ void AGMTKFongersCharacter::Server_DropItem_Implementation()
 		return;
 	}
 
-	FVector DropLocation = GetActorLocation() + DropOffset;
+	FVector DropLocation = GetActorLocation() + GetActorForwardVector() * DropOffset.Z;
 
 	AActor* NewActor = GetWorld()->SpawnActor<AActor>(
 		ItemHolding->WorldActorClass.Get(),
