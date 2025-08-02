@@ -61,6 +61,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category ="Input")
 	UInputAction* InteractAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category ="Input")
+	UInputAction* DropAction;
+
 	UPROPERTY(ReplicatedUsing=OnRep_ItemHolding, Transient)
 	TObjectPtr<UItemClassData> ItemHolding;
 
@@ -90,6 +93,9 @@ protected:
 	/** Handles jump end inputs from either controls or UI interfaces */
 	UFUNCTION(BlueprintCallable, Category="Input")
 	virtual void DoJumpEnd();
+
+	UFUNCTION(BlueprintCallable, Category="Input")
+	virtual void DropRequested();
 
 	UFUNCTION(BlueprintCallable, Category="Input")
 	void Authority_HoldItem(UItemClassData* ItemToHold);

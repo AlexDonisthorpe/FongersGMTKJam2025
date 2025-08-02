@@ -19,13 +19,6 @@ void UFongersInteractionFacilitator::InteractionRequested()
 {
 	if (CurrentInteractableActors.IsEmpty())
 	{
-		if (AGMTKFongersCharacter* Character = Cast<AGMTKFongersCharacter>(GetOwner()))
-		{
-			if (Character->GetIsHoldingItem())
-			{
-				Character->Server_DropItem();
-			}
-		}
 		return;
 	}
 

@@ -71,6 +71,7 @@ void AGMTKFongersCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 
 		// Interact
 		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Triggered, this , &AGMTKFongersCharacter::InteractPressed);
+		EnhancedInputComponent->BindAction(DropAction, ETriggerEvent::Triggered, this, &AGMTKFongersCharacter::DropRequested);
 	}
 	else
 	{
@@ -148,6 +149,14 @@ void AGMTKFongersCharacter::DoJumpEnd()
 {
 	// pass StopJumping to the character
 	StopJumping();
+}
+
+void AGMTKFongersCharacter::DropRequested()
+{
+	if (GetIsHoldingItem())
+	{
+		Server_DropItem();
+	}
 }
 
 void AGMTKFongersCharacter::Authority_HoldItem(UItemClassData* ItemToHold)
