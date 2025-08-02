@@ -6,6 +6,7 @@
 #include "Animation/AnimInstance.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "EnhancedInputComponent.h"
 #include "InputActionValue.h"
@@ -22,6 +23,8 @@ AGMTKFongersCharacter::AGMTKFongersCharacter()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
+
+
 	
 	// Create the first person mesh that will be viewed only by this character's owner
 	FirstPersonMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("First Person Mesh"));
@@ -30,6 +33,13 @@ AGMTKFongersCharacter::AGMTKFongersCharacter()
 	FirstPersonMesh->SetOnlyOwnerSee(true);
 	FirstPersonMesh->FirstPersonPrimitiveType = EFirstPersonPrimitiveType::FirstPerson;
 	FirstPersonMesh->SetCollisionProfileName(FName("NoCollision"));
+
+	FirstPersonItemMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("First Person Item Mesh"));
+	FirstPersonItemMesh->SetupAttachment(FirstPersonMesh, FName("Item_Attach_Socket"));
+	FirstPersonItemMesh->SetOnlyOwnerSee(true);
+	FirstPersonItemMesh->SetCollisionProfileName(FName("NoCollision"));
+	FirstPersonItemMesh->FirstPersonPrimitiveType = EFirstPersonPrimitiveType::FirstPerson;
+	FirstPersonItemMesh->SetVisibility(false);
 
 	// Create the Camera Component	
 	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("First Person Camera"));
@@ -44,6 +54,13 @@ AGMTKFongersCharacter::AGMTKFongersCharacter()
 	// configure the character comps
 	GetMesh()->SetOwnerNoSee(true);
 	GetMesh()->FirstPersonPrimitiveType = EFirstPersonPrimitiveType::WorldSpaceRepresentation;
+
+	ThirdPersonItemMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Third Person Item Mesh"));
+	ThirdPersonItemMesh->SetupAttachment(GetMesh(), FName("Item_Attach_Socket"));
+	ThirdPersonItemMesh->SetCollisionProfileName(FName("NoCollision"));
+	ThirdPersonItemMesh->SetOwnerNoSee(true);
+	ThirdPersonItemMesh->FirstPersonPrimitiveType = EFirstPersonPrimitiveType::WorldSpaceRepresentation;
+	ThirdPersonItemMesh->SetVisibility(false);
 
 	GetCapsuleComponent()->SetCapsuleSize(34.0f, 96.0f);
 
@@ -172,31 +189,22 @@ void AGMTKFongersCharacter::Authority_HoldItem(UItemClassData* ItemToHold)
 
 void AGMTKFongersCharacter::OnRep_ItemHolding()
 {
+	UStaticMeshComponent*& TempPointerToMesh = IsLocallyControlled() ? FirstPersonItemMesh : ThirdPersonItemMesh;
+	
 	if (ItemHolding)
 	{
-		AttachedMesh = NewObject<UStaticMeshComponent>(this); // 'this' is the owning actor
-		AttachedMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-		AttachedMesh->SetWorldScale3D(ItemHolding->Transform.GetScale3D());
-		AttachedMesh->SetStaticMesh(ItemHolding->StaticMesh);
+		FirstPersonItemMesh->SetWorldScale3D(ItemHolding->Scale);
+		FirstPersonItemMesh->SetStaticMesh(ItemHolding->StaticMesh);
+		FirstPersonItemMesh->SetVisibility(true);
 
-		AttachedMesh->FirstPersonPrimitiveType = IsLocallyControlled() ? EFirstPersonPrimitiveType::FirstPerson : EFirstPersonPrimitiveType::WorldSpaceRepresentation;
-		USkeletalMeshComponent* MeshToAttachTo = IsLocallyControlled() ? GetFirstPersonMesh() : GetMesh();
-
-		AttachedMesh->RegisterComponent(); // VERY IMPORTANT: makes it appear in the world
-		AttachedMesh->AttachToComponent(MeshToAttachTo, FAttachmentTransformRules::SnapToTargetNotIncludingScale, FName("Item_Attach_Socket"));
-
-		// Optional settings
-		AttachedMesh->SetVisibility(true);
+		ThirdPersonItemMesh->SetWorldScale3D(ItemHolding->Scale);
+		ThirdPersonItemMesh->SetStaticMesh(ItemHolding->StaticMesh);
+		ThirdPersonItemMesh->SetVisibility(true);
 	}
 	else
 	{
-		if (AttachedMesh)
-		{
-			AttachedMesh->SetVisibility(false);
-			AttachedMesh->UnregisterComponent();
-			AttachedMesh->DestroyComponent();
-			AttachedMesh = nullptr;
-		}
+		FirstPersonItemMesh->SetVisibility(false);
+		ThirdPersonItemMesh->SetVisibility(false);
 	}
 }
 

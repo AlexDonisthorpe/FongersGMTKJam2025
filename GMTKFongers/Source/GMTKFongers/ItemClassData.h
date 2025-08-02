@@ -22,7 +22,7 @@ public:
 	FGameplayTag Tag;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FTransform Transform;
+	FVector Scale;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName ItemName;

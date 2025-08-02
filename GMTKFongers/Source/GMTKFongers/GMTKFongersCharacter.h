@@ -38,8 +38,11 @@ class AGMTKFongersCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UFongersInteractionFacilitator> InteractionFacilitator;
 
-	UPROPERTY(Transient)
-	UStaticMeshComponent* AttachedMesh;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
+	UStaticMeshComponent* FirstPersonItemMesh;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
+	UStaticMeshComponent* ThirdPersonItemMesh;
 
 protected:
 
