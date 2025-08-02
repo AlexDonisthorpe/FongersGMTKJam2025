@@ -13,6 +13,7 @@ UFongersInteractionFacilitator::UFongersInteractionFacilitator()
 {
 	PrimaryComponentTick.TickInterval = 0.3f;
 	PrimaryComponentTick.bCanEverTick = true;
+	PrimaryComponentTick.bStartWithTickEnabled = true;
 }
 
 void UFongersInteractionFacilitator::InteractionRequested()
@@ -44,6 +45,11 @@ void UFongersInteractionFacilitator::InteractionRequested()
 void UFongersInteractionFacilitator::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (GetOwnerRole() != ROLE_AutonomousProxy)
+	{
+		SetComponentTickEnabled(false);
+	}
 
 	CompletionDelegate.BindUObject(this, &ThisClass::TargetingResult);
 	TargetingSubsystem = UTargetingSubsystem::GetTargetingSubsystem(GetWorld());

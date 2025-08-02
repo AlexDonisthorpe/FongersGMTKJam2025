@@ -134,7 +134,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FVector DropOffset;
 
-	UFUNCTION(Server, Reliable)
+	UFUNCTION(BlueprintCallable, Server, Reliable)
 	void Server_DropItem();
 };
 
