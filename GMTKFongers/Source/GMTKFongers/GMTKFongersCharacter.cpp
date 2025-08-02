@@ -11,6 +11,7 @@
 #include "InputActionValue.h"
 #include "ItemClassData.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -39,7 +40,7 @@ AGMTKFongersCharacter::AGMTKFongersCharacter()
 	FirstPersonCameraComponent->bEnableFirstPersonScale = true;
 	FirstPersonCameraComponent->FirstPersonFieldOfView = 70.0f;
 	FirstPersonCameraComponent->FirstPersonScale = 0.6f;
-
+	
 	// configure the character comps
 	GetMesh()->SetOwnerNoSee(true);
 	GetMesh()->FirstPersonPrimitiveType = EFirstPersonPrimitiveType::WorldSpaceRepresentation;
@@ -177,7 +178,8 @@ void AGMTKFongersCharacter::OnRep_ItemHolding()
 		AttachedMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 		AttachedMesh->SetWorldScale3D(ItemHolding->Transform.GetScale3D());
 		AttachedMesh->SetStaticMesh(ItemHolding->StaticMesh);
-	
+
+		AttachedMesh->FirstPersonPrimitiveType = IsLocallyControlled() ? EFirstPersonPrimitiveType::FirstPerson : EFirstPersonPrimitiveType::WorldSpaceRepresentation;
 		USkeletalMeshComponent* MeshToAttachTo = IsLocallyControlled() ? GetFirstPersonMesh() : GetMesh();
 
 		AttachedMesh->RegisterComponent(); // VERY IMPORTANT: makes it appear in the world

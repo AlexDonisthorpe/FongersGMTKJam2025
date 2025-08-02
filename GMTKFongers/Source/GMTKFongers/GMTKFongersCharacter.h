@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "Logging/LogMacros.h"
 #include "Net/UnrealNetwork.h"
 #include "GMTKFongersCharacter.generated.h"
