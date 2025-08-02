@@ -172,7 +172,7 @@ void AGMTKFongersCharacter::OnRep_ItemHolding()
 		USkeletalMeshComponent* MeshToAttachTo = IsLocallyControlled() ? GetFirstPersonMesh() : GetMesh();
 
 		AttachedMesh->RegisterComponent(); // VERY IMPORTANT: makes it appear in the world
-		AttachedMesh->AttachToComponent(MeshToAttachTo, FAttachmentTransformRules::SnapToTargetNotIncludingScale, FName("Hand_r"));
+		AttachedMesh->AttachToComponent(MeshToAttachTo, FAttachmentTransformRules::SnapToTargetNotIncludingScale, FName("Item_Attach_Socket"));
 
 		// Optional settings
 		AttachedMesh->SetVisibility(true);
