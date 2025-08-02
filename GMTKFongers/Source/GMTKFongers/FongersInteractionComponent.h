@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Net/UnrealNetwork.h"
 #include "FongersInteractionComponent.generated.h"
 
 class AActor;
@@ -19,16 +20,10 @@ public:
 	FName GetItemName() const { return ItemName; };
 	
 	UFUNCTION(BlueprintNativeEvent, BlueprintPure)
-	bool CanInteract() const;
+	bool CanInteract(AActor* InteractingActor) const;
 
 	UFUNCTION(BlueprintPure)
 	AActor* GetInteractingActor() const { return CurrentInteractingActor.Get(); }
-
-	UFUNCTION(BlueprintCallable)
-	virtual bool RequestTapInteraction(AActor* InteractingActor);
-
-	UFUNCTION(Server, Reliable)
-	virtual void ServerStartTapInteraction(AActor* InteractingActor);
 
 	UFUNCTION(BlueprintNativeEvent)
 	void PerformTapInteraction(AActor* InteractingActor);

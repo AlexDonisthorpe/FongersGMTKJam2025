@@ -17,10 +17,14 @@ public class GMTKFongers : ModuleRules
 			"AIModule",
 			"StateTreeModule",
 			"GameplayStateTreeModule",
-			"UMG"
+			"UMG",
+			"GameplayTags"
 		});
 
-		PrivateDependencyModuleNames.AddRange(new string[] { });
+		PrivateDependencyModuleNames.AddRange(new string[]
+		{
+			"TargetingSystem"
+		});
 
 		PublicIncludePaths.AddRange(new string[] {
 			"GMTKFongers",

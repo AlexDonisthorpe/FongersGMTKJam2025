@@ -1,12 +1,15 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "GMTKFongersCharacter.h"
+#include "FongersInteractionFacilitator.h"
+#include "Components/ActorComponent.h"
 #include "Animation/AnimInstance.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "EnhancedInputComponent.h"
 #include "InputActionValue.h"
+#include "ItemClassData.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
@@ -46,6 +49,8 @@ AGMTKFongersCharacter::AGMTKFongersCharacter()
 	// Configure character movement
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 	GetCharacterMovement()->AirControl = 0.5f;
+
+	InteractionFacilitator = CreateDefaultSubobject<UFongersInteractionFacilitator>(TEXT("Interaction Component"));
 }
 
 void AGMTKFongersCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -63,6 +68,9 @@ void AGMTKFongersCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 		// Looking/Aiming
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AGMTKFongersCharacter::LookInput);
 		EnhancedInputComponent->BindAction(MouseLookAction, ETriggerEvent::Triggered, this, &AGMTKFongersCharacter::LookInput);
+
+		// Interact
+		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Triggered, this , &AGMTKFongersCharacter::InteractPressed);
 	}
 	else
 	{
@@ -70,6 +78,25 @@ void AGMTKFongersCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 	}
 }
 
+void AGMTKFongersCharacter::Server_DropItem_Implementation()
+{
+	if (ItemHolding.Get() == nullptr)
+	{
+		return;
+	}
+
+	FVector DropLocation = GetActorLocation() + DropOffset;
+
+	AActor* NewActor = GetWorld()->SpawnActor<AActor>(
+		ItemHolding->WorldActorClass.Get(),
+		DropLocation,
+		GetActorRotation());
+
+	if (NewActor)
+	{
+		ItemHolding = nullptr;
+	}
+}
 
 void AGMTKFongersCharacter::MoveInput(const FInputActionValue& Value)
 {
@@ -121,4 +148,58 @@ void AGMTKFongersCharacter::DoJumpEnd()
 {
 	// pass StopJumping to the character
 	StopJumping();
+}
+
+void AGMTKFongersCharacter::Authority_HoldItem(UItemClassData* ItemToHold)
+{
+	if (!HasAuthority())
+	{
+		return;
+	}
+	
+	ItemHolding = ItemToHold;
+}
+
+void AGMTKFongersCharacter::OnRep_ItemHolding()
+{
+	if (ItemHolding)
+	{
+		AttachedMesh = NewObject<UStaticMeshComponent>(this); // 'this' is the owning actor
+		AttachedMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		AttachedMesh->SetWorldScale3D(ItemHolding->Transform.GetScale3D());
+		AttachedMesh->SetStaticMesh(ItemHolding->StaticMesh);
+	
+		USkeletalMeshComponent* MeshToAttachTo = IsLocallyControlled() ? GetFirstPersonMesh() : GetMesh();
+
+		AttachedMesh->RegisterComponent(); // VERY IMPORTANT: makes it appear in the world
+		AttachedMesh->AttachToComponent(MeshToAttachTo, FAttachmentTransformRules::SnapToTargetNotIncludingScale, FName("Hand_r"));
+
+		// Optional settings
+		AttachedMesh->SetVisibility(true);
+	}
+	else
+	{
+		if (AttachedMesh)
+		{
+			AttachedMesh->SetVisibility(false);
+			AttachedMesh->UnregisterComponent();
+			AttachedMesh->DestroyComponent();
+			AttachedMesh = nullptr;
+		}
+	}
+}
+
+void AGMTKFongersCharacter::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AGMTKFongersCharacter, ItemHolding)
+}
+
+void AGMTKFongersCharacter::InteractPressed(const FInputActionValue& InputActionValue)
+{
+	if (InteractionFacilitator)
+	{
+		InteractionFacilitator->InteractionRequested();
+	}
 }
